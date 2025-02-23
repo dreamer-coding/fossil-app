@@ -11,7 +11,7 @@
  * Copyright (C) 2024 Fossil Logic. All rights reserved.
  * -----------------------------------------------------------------------------
  */
-#include "fossil/app/lifecycle.h"
+#include "fossil/code/lifecycle.h"
 
 // Function implementations for lifecycle methods
 void fossil_app_on_create(fossil_app_engine_t* app) {
