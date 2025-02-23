@@ -148,6 +148,16 @@ bool fossil_app_transition(fossil_app_engine_t* app, fossil_app_state_t new_stat
  */
 void fossil_app_init(fossil_app_engine_t* app);
 
+/**
+ * @brief Method to run the Fossil App engine.
+ * This function is the main loop for the Fossil App engine. It runs the application
+ * lifecycle and calls the appropriate callback functions based on the current state
+ * of the application.
+ * 
+ * @param app Pointer to the application engine structure.
+ */
+void fossil_app_run(fossil_app_engine_t* app);
+
 #ifdef __cplusplus
 }
 #endif
