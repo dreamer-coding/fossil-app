@@ -1,6 +1,6 @@
 # **Fossil Project**
 
-This project template serves as a starting point for creating classic executable projects that can be published as applications on Flatpak and/or via GitHub. It includes the necessary setup, compilation, installation, and running instructions to get your project up and running quickly.
+This project template serves as a starting point for creating classic executable projects that can be published as applications on Docker or even via GitHub. It includes the necessary setup, compilation, installation, and running instructions to get your project up and running quickly.
 
 ## **Prerequisites**
 
@@ -18,8 +18,8 @@ Ensure you have the following installed before starting:
 1. **Clone the Repository**:
 
     ```sh
-    git clone https://github.com/fossillogic/<exe name>.git
-    cd <exe name>
+    git clone https://github.com/fossillogic/fossil-app.git
+    cd fossil-app
     ```
 
 2. **Configure the Build**:
