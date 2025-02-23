@@ -14,6 +14,9 @@
 #ifndef FOSSIL_APP_LIFECYCLE_H
 #define FOSSIL_APP_LIFECYCLE_H
 
+#include <fossil/sys/framework.h>
+#include <fossil/io/framework.h>
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

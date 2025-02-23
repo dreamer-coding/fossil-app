@@ -17,12 +17,12 @@
 
 // Fossil App example implementation (Custom application)
 void custom_app_on_create(fossil_app_engine_t* app) {
-    printf("Custom App Created\n");
+    fossil_io_printf("Custom App Created\n");
     app->state = FOSSIL_APP_LIFECYCLE_STATE_CREATED;
 }
 
 void custom_app_on_start(fossil_app_engine_t* app) {
-    printf("Custom App Started\n");
+    fossil_io_printf("Custom App Started\n");
     app->state = FOSSIL_APP_LIFECYCLE_STATE_STARTED;
 }
 
@@ -30,7 +30,7 @@ bool app_entry(int argc, char** argv) {
     (void)argc; // Unused parameter
     (void)argv; // Unused parameter
 
-    printf("Custom App Entry\n");
+    fossil_io_printf("Custom App Entry\n");
     fossil_app_engine_t app;
     fossil_app_init(&app);
     

@@ -15,72 +15,72 @@
 
 // Function implementations for lifecycle methods
 void fossil_app_on_create(fossil_app_engine_t* app) {
-    if (app == NULL) {
-        fprintf(stderr, "Error: app is NULL in fossil_app_on_create\n");
+    if (app == cnullptr) {
+        fossil_io_error("%s\n", fossil_io_what(FOSSIL_ERROR_NULL_POINTER));
         return;
     }
-    printf("Fossil App created\n");
+    fossil_io_printf("Fossil App created\n");
     app->state = FOSSIL_APP_LIFECYCLE_STATE_CREATED;
 }
 
 void fossil_app_on_start(fossil_app_engine_t* app) {
-    if (app == NULL) {
-        fprintf(stderr, "Error: app is NULL in fossil_app_on_start\n");
+    if (app == cnullptr) {
+        fossil_io_error("%s\n", fossil_io_what(FOSSIL_ERROR_NULL_POINTER));
         return;
     }
-    printf("Fossil App started\n");
+    fossil_io_printf("Fossil App started\n");
     app->state = FOSSIL_APP_LIFECYCLE_STATE_STARTED;
 }
 
 void fossil_app_on_resume(fossil_app_engine_t* app) {
-    if (app == NULL) {
-        fprintf(stderr, "Error: app is NULL in fossil_app_on_resume\n");
+    if (app == cnullptr) {
+        fossil_io_error("%s\n", fossil_io_what(FOSSIL_ERROR_NULL_POINTER));
         return;
     }
-    printf("Fossil App resumed\n");
+    fossil_io_printf("Fossil App resumed\n");
     app->state = FOSSIL_APP_LIFECYCLE_STATE_RESUMED;
 }
 
 void fossil_app_on_pause(fossil_app_engine_t* app) {
-    if (app == NULL) {
-        fprintf(stderr, "Error: app is NULL in fossil_app_on_pause\n");
+    if (app == cnullptr) {
+        fossil_io_error("%s\n", fossil_io_what(FOSSIL_ERROR_NULL_POINTER));
         return;
     }
-    printf("Fossil App paused\n");
+    fossil_io_printf("Fossil App paused\n");
     app->state = FOSSIL_APP_LIFECYCLE_STATE_PAUSED;
 }
 
 void fossil_app_on_timeout(fossil_app_engine_t* app) {
-    if (app == NULL) {
-        fprintf(stderr, "Error: app is NULL in fossil_app_on_timeout\n");
+    if (app == cnullptr) {
+        fossil_io_error("%s\n", fossil_io_what(FOSSIL_ERROR_NULL_POINTER));
         return;
     }
-    printf("Fossil App timed out\n");
+    fossil_io_printf("Fossil App timed out\n");
     app->state = FOSSIL_APP_LIFECYCLE_STATE_TIMEOUT;
 }
 
 void fossil_app_on_stop(fossil_app_engine_t* app) {
-    if (app == NULL) {
-        fprintf(stderr, "Error: app is NULL in fossil_app_on_stop\n");
+    if (app == cnullptr) {
+        fossil_io_error("%s\n", fossil_io_what(FOSSIL_ERROR_NULL_POINTER));
         return;
     }
-    printf("Fossil App stopped\n");
+    fossil_io_printf("Fossil App stopped\n");
     app->state = FOSSIL_APP_LIFECYCLE_STATE_STOPPED;
 }
 
 void fossil_app_on_destroy(fossil_app_engine_t* app) {
-    if (app == NULL) {
-        fprintf(stderr, "Error: app is NULL in fossil_app_on_destroy\n");
+    if (app == cnullptr) {
+        fossil_io_error("%s\n", fossil_io_what(FOSSIL_ERROR_NULL_POINTER));
         return;
     }
-    printf("Fossil App destroyed\n");
+    fossil_io_printf("Fossil App destroyed\n");
     app->state = FOSSIL_APP_LIFECYCLE_STATE_DESTROYED;
 }
 
 // Transition check to ensure valid state transitions
 bool fossil_app_transition(fossil_app_engine_t* app, fossil_app_state_t new_state) {
-    if (app == NULL) {
-        fprintf(stderr, "Error: app is NULL in fossil_app_transition\n");
+    if (app == cnullptr) {
+        fossil_io_error("%s\n", fossil_io_what(FOSSIL_ERROR_NULL_POINTER));
         return false;
     }
     switch (app->state) {
@@ -110,16 +110,17 @@ bool fossil_app_transition(fossil_app_engine_t* app, fossil_app_state_t new_stat
 
 // Initialize the Fossil App engine with the correct lifecycle methods
 void fossil_app_init(fossil_app_engine_t* app) {
-    if (app == NULL) {
-        fprintf(stderr, "Error: app is NULL in fossil_app_init\n");
+    if (app == cnullptr) {
+        fossil_io_error("%s\n", fossil_io_what(FOSSIL_ERROR_NULL_POINTER));
         return;
     }
-    memset(app, 0, sizeof(fossil_app_engine_t));
-    app->on_create = fossil_app_on_create;
-    app->on_start = fossil_app_on_start;
-    app->on_resume = fossil_app_on_resume;
-    app->on_pause = fossil_app_on_pause;
-    app->on_stop = fossil_app_on_stop;
+
+    fossil_sys_memory_set(app, 0, sizeof(fossil_app_engine_t));
+    app->on_create  = fossil_app_on_create;
+    app->on_start   = fossil_app_on_start;
+    app->on_resume  = fossil_app_on_resume;
+    app->on_pause   = fossil_app_on_pause;
+    app->on_stop    = fossil_app_on_stop;
     app->on_timeout = fossil_app_on_timeout;
     app->on_destroy = fossil_app_on_destroy;
     app->transition = fossil_app_transition;
@@ -127,8 +128,8 @@ void fossil_app_init(fossil_app_engine_t* app) {
 
 // Main loop for the Fossil App engine
 void fossil_app_run(fossil_app_engine_t* app) {
-    if (app == NULL) {
-        fprintf(stderr, "Error: app is NULL in fossil_app_run\n");
+    if (app == cnullptr) {
+        fossil_io_error("%s\n", fossil_io_what(FOSSIL_ERROR_NULL_POINTER));
         return;
     }
     bool is_running = true;
@@ -178,7 +179,7 @@ void fossil_app_run(fossil_app_engine_t* app) {
                 break;
 
             default:
-                fprintf(stderr, "Error: Unknown state in fossil_app_run\n");
+                fossil_io_error("%s\n", fossil_io_what(FOSSIL_ERROR_UNKNOWN));
                 is_running = false;  // Exit on unknown state
                 break;
         }
