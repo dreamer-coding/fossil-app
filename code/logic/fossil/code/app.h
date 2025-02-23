@@ -40,4 +40,4 @@ bool app_entry(int argc, char** argv);
 }
 #endif
 
-#endif /* FOSSIL_APP_MVC_H */
+#endif /* FOSSIL_APP_CODE_H */
