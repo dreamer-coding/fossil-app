@@ -17,8 +17,6 @@
 #include <fossil/sys/framework.h>
 #include <fossil/io/framework.h>
 
-#include "lifecycle.h"
-
 #define FOSSIL_APP_NAME "Sample App"
 #define FOSSIL_APP_VERSION "0.1.0"
 

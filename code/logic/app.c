@@ -12,6 +12,8 @@
  * -----------------------------------------------------------------------------
  */
 #include "fossil/code/app.h"
+#include "fossil/code/lifecycle.h"
+
 
 // Fossil App example implementation (Custom application)
 void custom_app_on_create(fossil_app_engine_t* app) {
@@ -25,6 +27,9 @@ void custom_app_on_start(fossil_app_engine_t* app) {
 }
 
 bool app_entry(int argc, char** argv) {
+    (void)argc; // Unused parameter
+    (void)argv; // Unused parameter
+
     printf("Custom App Entry\n");
     fossil_app_engine_t app;
     fossil_app_init(&app);
